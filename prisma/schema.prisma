@@ -45,8 +45,8 @@ model SiteSettings {
   heroSub     String @default("Я — начинающий тренер.")
 
   // media
-  heroPortraitUrl String?
-  promoVideoUrl   String?
+  heroPortraitUrl String? @default("/uploads/photo.jpeg")
+  promoVideoUrl   String? @default("/uploads/IMG_9781.MP4")
 
   updatedAt DateTime @updatedAt
 }

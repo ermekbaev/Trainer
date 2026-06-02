@@ -24,6 +24,8 @@ async function main() {
       id: "main",
       heroSub:
         "Я — начинающий тренер. Через неделю заканчиваю 240-часовой курс и беру первых пять подопечных по интро-цене.",
+      heroPortraitUrl: "/uploads/photo.jpeg",
+      promoVideoUrl: "/uploads/IMG_9781.MP4",
     },
   });
   console.log("✓ site settings");

@@ -43,3 +43,5 @@ next-env.d.ts
 # uploaded media (keep folder, ignore files)
 /public/uploads/*
 !/public/uploads/.gitkeep
+!/public/uploads/photo.jpeg
+!/public/uploads/IMG_9781.MP4

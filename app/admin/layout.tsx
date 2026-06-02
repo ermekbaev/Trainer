@@ -19,7 +19,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   return (
     <div style={{ minHeight: "100vh", display: "flex", background: "#f4efe6", fontFamily: "Geist, system-ui, sans-serif", color: "#0d0c10" }}>
-      <aside style={{ width: 240, flex: "0 0 240px", background: "#0d0c10", color: "#f4efe6", display: "flex", flexDirection: "column", position: "sticky", top: 0, height: "100vh" }}>
+      <aside style={{ width: 240, flex: "0 0 240px", background: "#0d0c10", color: "#f4efe6", display: "flex", flexDirection: "column", position: "fixed", top: 0, left: 0, height: "100vh", zIndex: 50, overflowY: "auto" }}>
         <div style={{ padding: "24px 22px", borderBottom: "1px solid rgba(244,239,230,.15)" }}>
           <div style={{ fontFamily: mono, fontSize: 10, letterSpacing: ".2em", color: "rgba(244,239,230,.55)" }}>ADMIN · IRON</div>
           <div style={{ fontFamily: "Instrument Serif, serif", fontSize: 28, marginTop: 2 }}>Панель</div>
@@ -41,7 +41,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           </form>
         </div>
       </aside>
-      <main style={{ flex: 1, padding: "40px 48px", maxWidth: 1000 }}>{children}</main>
+      <main style={{ flex: 1, marginLeft: 240, padding: "40px 48px", maxWidth: 1000 }}>{children}</main>
     </div>
   );
 }
