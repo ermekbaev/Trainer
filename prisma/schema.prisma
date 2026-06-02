@@ -1,0 +1,97 @@
+// Prisma schema — Iron / Erbol trainer landing
+// Postgres (deploy: Railway). Run: npx prisma migrate dev
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ---- Admin auth ----
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String?
+  passwordHash String
+  role         String   @default("ADMIN")
+  createdAt    DateTime @default(now())
+}
+
+// ---- Singleton site settings (id always = "main") ----
+model SiteSettings {
+  id        String @id @default("main")
+
+  // first-cohort / header
+  spotsLeft Int    @default(5)
+
+  // section toggles
+  showVideo           Boolean @default(true)
+  showTransformations Boolean @default(true)
+
+  // theme
+  accent String @default("#2d6a4f")
+
+  // pricing (strings — keep the formatting like "25 000")
+  priceStarter   String @default("25 000")
+  priceSignature String @default("60 000")
+  priceFounder   String @default("40 000")
+
+  // hero editable copy (ru)
+  heroEyebrow String @default("Персональный тренинг · Бишкек / Online")
+  heroTitle   String @default("Сила|не находится.|Её|выковывают.") // 4 lines joined by |
+  heroSub     String @default("Я — начинающий тренер.")
+
+  // media
+  heroPortraitUrl String?
+  promoVideoUrl   String?
+
+  updatedAt DateTime @updatedAt
+}
+
+// ---- Before / after transformations ----
+model Transformation {
+  id             String  @id @default(cuid())
+  name           String
+  weeksLabel     String  @default("0 → 12 нед.")
+  kgFrom         Int     @default(0)
+  kgTo           Int     @default(0)
+  beforeImageUrl String?
+  afterImageUrl  String?
+  order          Int     @default(0)
+  published      Boolean @default(true)
+  createdAt      DateTime @default(now())
+}
+
+// ---- Instagram / gallery grid ----
+model FeedItem {
+  id        String  @id @default(cuid())
+  imageUrl  String?
+  text      String  @default("")
+  sub       String  @default("")
+  order     Int     @default(0)
+  published Boolean @default(true)
+  createdAt DateTime @default(now())
+}
+
+// ---- Trial booking submissions ----
+model Booking {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  goal      String
+  handled   Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+// ---- Uploaded media registry ----
+model Media {
+  id        String   @id @default(cuid())
+  url       String
+  filename  String
+  mime      String
+  size      Int
+  createdAt DateTime @default(now())
+}
