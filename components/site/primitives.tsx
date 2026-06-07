@@ -363,8 +363,8 @@ export function VideoPreview({
 
   if (videoUrl) {
     return (
-      <div style={{ position: "relative", height, borderRadius: p.radius, overflow: "hidden", background: "#000" }}>
-        <video src={videoUrl} controls preload="metadata" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+      <div style={{ borderRadius: p.radius, overflow: "hidden", background: "#000" }}>
+        <video src={videoUrl} controls preload="metadata" style={{ width: "100%", display: "block" }} />
       </div>
     );
   }
