@@ -19,7 +19,10 @@ async function main() {
   // --- Singleton settings ---
   await prisma.siteSettings.upsert({
     where: { id: "main" },
-    update: {},
+    update: {
+      heroPortraitUrl: "/uploads/photo.jpeg",
+      promoVideoUrl: "/uploads/IMG_9781.MP4",
+    },
     create: {
       id: "main",
       heroSub:
