@@ -44,4 +44,4 @@ next-env.d.ts
 /public/uploads/*
 !/public/uploads/.gitkeep
 !/public/uploads/photo.jpeg
-!/public/uploads/IMG_9781.MP4
+!/public/uploads/promo.mp4

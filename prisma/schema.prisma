@@ -46,7 +46,7 @@ model SiteSettings {
 
   // media
   heroPortraitUrl String? @default("/uploads/photo.jpeg")
-  promoVideoUrl   String? @default("/uploads/IMG_9781.MP4")
+  promoVideoUrl   String? @default("/uploads/promo.mp4")
 
   updatedAt DateTime @updatedAt
 }
